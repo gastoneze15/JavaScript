@@ -1,8 +1,8 @@
 
 const STORAGE_KEY = "carrito_indumentaria";
-const IVA = 0.21; // referencia
+const IVA = 0.21; 
 
-// Catálogo (puede tener categoría y talle sugerido)
+// Catálogo
 const productos = [
     { id: 201, nombre: "Remera algodón oversize", categoria: "remeras", talle: "S-M-L-XL", precio: 14500 },
     { id: 202, nombre: "Remera básica cuello V", categoria: "remeras", talle: "S-M-L", precio: 12900 },
@@ -31,12 +31,12 @@ const productos = [
 let carrito = cargarCarrito();
 let descuento = 0;
 
-// Helpers
+
 const $ = (sel) => document.querySelector(sel);
 const $$ = (sel) => Array.from(document.querySelectorAll(sel));
 const fmt = (n) => n.toLocaleString("es-AR");
 
-// -------------------- RENDER --------------------
+//RENDER 
 
 function renderCatalogo(lista = productos) {
     const cont = $("#catalogo");
@@ -90,12 +90,12 @@ function renderCarrito() {
     $("#descuento").textContent = fmt(descuento);
     $("#total").textContent = fmt(total);
 
-    // Badge
+
     const cant = carrito.reduce((acc, i) => acc + i.cantidad, 0);
     $("#badge").textContent = cant;
 }
 
-// -------------------- LÓGICA --------------------
+//logica
 
 function agregarAlCarrito(id) {
     const prod = productos.find((p) => p.id === id);
@@ -161,7 +161,7 @@ function finalizar() {
     );
 }
 
-// -------------------- STORAGE --------------------
+// Lcoal Storage
 
 function persistir() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(carrito));
@@ -175,7 +175,7 @@ function cargarCarrito() {
     }
 }
 
-// -------------------- EVENTOS --------------------
+
 
 function wire() {
     // Delegación en catálogo
@@ -206,12 +206,12 @@ function wire() {
         renderCatalogo(filtrados);
     });
 
-    // Vaciar / Finalizar
+    //Finalizar
     $("#vaciar").addEventListener("click", vaciar);
     $("#finalizar").addEventListener("click", finalizar);
 }
 
-// -------------------- INIT --------------------
+
 
 function init() {
     renderCatalogo();
