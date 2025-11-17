@@ -1,0 +1,114 @@
+[
+    {
+        "id": 201,
+        "nombre": "Remera oversize",
+        "categoria": "remeras",
+        "talle": "S-M-L-XL",
+        "precio": 14500
+    },
+    {
+        "id": 202,
+        "nombre": "Remera básica cuello V",
+        "categoria": "remeras",
+        "talle": "S-M-L",
+        "precio": 12900
+    },
+    {
+        "id": 203,
+        "nombre": "Top morley canelado",
+        "categoria": "tops",
+        "talle": "S-M-L",
+        "precio": 9800
+    },
+    {
+        "id": 204,
+        "nombre": "Jean mom",
+        "categoria": "jeans",
+        "talle": "36-46",
+        "precio": 45900
+    },
+    {
+        "id": 205,
+        "nombre": "Jean wide leg",
+        "categoria": "jeans",
+        "talle": "36-46",
+        "precio": 49900
+    },
+    {
+        "id": 206,
+        "nombre": "Pantalón sastrero",
+        "categoria": "pantalones",
+        "talle": "S-M-L",
+        "precio": 42900
+    },
+    {
+        "id": 207,
+        "nombre": "Vestido midi floral",
+        "categoria": "vestidos",
+        "talle": "S-M-L",
+        "precio": 53900
+    },
+    {
+        "id": 208,
+        "nombre": "Vestido camisero lino",
+        "categoria": "vestidos",
+        "talle": "S-M-L",
+        "precio": 58900
+    },
+    {
+        "id": 209,
+        "nombre": "Buzo frisa capucha",
+        "categoria": "buzos",
+        "talle": "S-M-L-XL",
+        "precio": 33900
+    },
+    {
+        "id": 210,
+        "nombre": "Sweater trenza",
+        "categoria": "sweaters",
+        "talle": "S-M-L",
+        "precio": 31900
+    },
+    {
+        "id": 211,
+        "nombre": "Campera biker eco-cuero",
+        "categoria": "camperas",
+        "talle": "S-M-L",
+        "precio": 79900
+    },
+    {
+        "id": 212,
+        "nombre": "Puffer corta",
+        "categoria": "camperas",
+        "talle": "S-M-L",
+        "precio": 89900
+    },
+    {
+        "id": 213,
+        "nombre": "Zapatillas urbanas",
+        "categoria": "calzado",
+        "talle": "35-40",
+        "precio": 75900
+    },
+    {
+        "id": 214,
+        "nombre": "Borcegos c/ plataforma",
+        "categoria": "calzado",
+        "talle": "35-40",
+        "precio": 89900
+    },
+    {
+        "id": 215,
+        "nombre": "Cinto cuero ancho",
+        "categoria": "accesorios",
+        "talle": "Único",
+        "precio": 14900
+    },
+    {
+        "id": 216,
+        "nombre": "Cartera bandolera",
+        "categoria": "accesorios",
+        "talle": "Único",
+        "precio": 42900
+    }
+]

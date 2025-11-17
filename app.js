@@ -1,45 +1,24 @@
 
+
 const STORAGE_KEY = "carrito_indumentaria";
-const IVA = 0.21; 
-
-// Catálogo
-const productos = [
-    { id: 201, nombre: "Remera algodón oversize", categoria: "remeras", talle: "S-M-L-XL", precio: 14500 },
-    { id: 202, nombre: "Remera básica cuello V", categoria: "remeras", talle: "S-M-L", precio: 12900 },
-    { id: 203, nombre: "Top morley canelado", categoria: "tops", talle: "S-M-L", precio: 9800 },
-
-    { id: 204, nombre: "Jean mom high rise", categoria: "jeans", talle: "36-46", precio: 45900 },
-    { id: 205, nombre: "Jean wide leg", categoria: "jeans", talle: "36-46", precio: 49900 },
-    { id: 206, nombre: "Pantalón sastrero", categoria: "pantalones", talle: "S-M-L", precio: 42900 },
-
-    { id: 207, nombre: "Vestido midi floral", categoria: "vestidos", talle: "S-M-L", precio: 53900 },
-    { id: 208, nombre: "Vestido camisero lino", categoria: "vestidos", talle: "S-M-L", precio: 58900 },
-
-    { id: 209, nombre: "Buzo frisa capucha", categoria: "buzos", talle: "S-M-L-XL", precio: 33900 },
-    { id: 210, nombre: "Sweater trenza", categoria: "sweaters", talle: "S-M-L", precio: 31900 },
-
-    { id: 211, nombre: "Campera biker eco-cuero", categoria: "camperas", talle: "S-M-L", precio: 79900 },
-    { id: 212, nombre: "Puffer corta", categoria: "camperas", talle: "S-M-L", precio: 89900 },
-
-    { id: 213, nombre: "Zapatillas urbanas", categoria: "calzado", talle: "35-40", precio: 75900 },
-    { id: 214, nombre: "Borcegos c/ plataforma", categoria: "calzado", talle: "35-40", precio: 89900 },
-
-    { id: 215, nombre: "Cinto cuero ancho", categoria: "accesorios", talle: "Único", precio: 14900 },
-    { id: 216, nombre: "Cartera bandolera", categoria: "accesorios", talle: "Único", precio: 42900 }
-];
-
+const IVA = 0.21;
+let productos = [];            
 let carrito = cargarCarrito();
 let descuento = 0;
 
+const select = (sel) => document.querySelector(sel);
+const formatPrecio = (n) => n.toLocaleString("es-AR");
 
-const $ = (sel) => document.querySelector(sel);
-const $$ = (sel) => Array.from(document.querySelectorAll(sel));
-const fmt = (n) => n.toLocaleString("es-AR");
-
-//RENDER 
+function cargarProductos() {
+    return fetch("./productos.json")
+        .then((res) => {
+            if (!res.ok) throw new Error("No se pudo cargar productos.json");
+            return res.json();
+        });
+}
 
 function renderCatalogo(lista = productos) {
-    const cont = $("#catalogo");
+    const cont = select("#catalogo");
     cont.innerHTML = "";
     lista.forEach((p) => {
         const el = document.createElement("div");
@@ -48,7 +27,7 @@ function renderCatalogo(lista = productos) {
         <h3>${p.nombre}</h3>
         <div class="muted">${p.categoria} · Talles ${p.talle}</div>
         <div class="row">
-        <strong>$${fmt(p.precio)}</strong>
+        <strong>$${formatPrecio(p.precio)}</strong>
         <button data-id="${p.id}" class="btn-add">Agregar</button>
         </div>
     `;
@@ -57,7 +36,7 @@ function renderCatalogo(lista = productos) {
 }
 
 function renderCarrito() {
-    const cont = $("#carrito");
+    const cont = select("#carrito");
     if (!carrito.length) {
         cont.innerHTML = `<p class="muted">No agregaste productos.</p>`;
     } else {
@@ -65,20 +44,19 @@ function renderCarrito() {
             .map(
                 (item) => `
         <div class="item">
-        <div>
+            <div>
             <div><strong>${item.nombre}</strong></div>
-            <div class="muted">$${fmt(item.precio)} · ${item.talle || "Talle único"
-                    }</div>
-        </div>
-        <div class="qty">
+            <div class="muted">
+                $${formatPrecio(item.precio)} · ${item.talle || "Talle único"}
+            </div>
+            </div>
+            <div class="qty">
             <button class="menos" data-id="${item.id}">−</button>
             <span>${item.cantidad}</span>
             <button class="mas" data-id="${item.id}">+</button>
-            <button class="quitar danger ghost" data-id="${item.id
-                    }">Quitar</button>
-        </div>
-        </div>
-    `
+            <button class="quitar danger ghost" data-id="${item.id}">Quitar</button>
+            </div>
+        </div> `
             )
             .join("");
     }
@@ -86,16 +64,15 @@ function renderCarrito() {
     // Totales
     const sub = carrito.reduce((acc, i) => acc + i.precio * i.cantidad, 0);
     const total = Math.max(0, sub - descuento);
-    $("#subtotal").textContent = fmt(sub);
-    $("#descuento").textContent = fmt(descuento);
-    $("#total").textContent = fmt(total);
-
+    select("#subtotal").textContent = formatPrecio(sub);
+    select("#descuento").textContent = formatPrecio(descuento);
+    select("#total").textContent = formatPrecio(total);
 
     const cant = carrito.reduce((acc, i) => acc + i.cantidad, 0);
-    $("#badge").textContent = cant;
+    select("#badge").textContent = cant;
 }
 
-//logica
+// LÓGICA
 
 function agregarAlCarrito(id) {
     const prod = productos.find((p) => p.id === id);
@@ -130,38 +107,103 @@ function aplicarCupon(codigo) {
     const pct = cupones[key];
 
     const sub = carrito.reduce((a, i) => a + i.precio * i.cantidad, 0);
+
     if (!pct) {
         descuento = 0;
-        alert("Cupón inválido o vacío.");
+        Swal.fire({
+            icon: "error",
+            title: "Cupón inválido",
+            text: "Revisá el código ingresado.",
+            confirmButtonText: "Aceptar"
+        });
     } else {
         descuento = Math.round(sub * pct);
-        alert(`Cupón aplicado: ${key} (−${pct * 100}%)`);
+        Swal.fire({
+            icon: "success",
+            title: "Cupón aplicado",
+            html: `<p><strong>${key}</strong> -${pct * 100}%</p>
+                <p>Descuento: $${formatPrecio(descuento)}</p>`,
+            timer: 2000,
+            showConfirmButton: false
+        });
     }
+
     renderCarrito();
 }
 
 function vaciar() {
-    carrito = [];
-    descuento = 0;
-    persistir();
-    renderCarrito();
+    if (!carrito.length) {
+        Swal.fire({
+            icon: "info",
+            title: "El carrito ya está vacío",
+            timer: 1500,
+            showConfirmButton: false
+        });
+        return;
+    }
+
+    Swal.fire({
+        title: "¿Vaciar carrito?",
+        text: "Se eliminarán todos los productos del carrito.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6",
+        confirmButtonText: "Sí, vaciar",
+        cancelButtonText: "Cancelar"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            carrito = [];
+            descuento = 0;
+            persistir();
+            renderCarrito();
+
+            Swal.fire({
+                icon: "success",
+                title: "se vacio el Carrito",
+                timer: 1500,
+                showConfirmButton: false
+            });
+        }
+    });
 }
 
 function finalizar() {
-    if (!carrito.length) return alert("El carrito está vacío.");
+    if (!carrito.length) {
+        Swal.fire({
+            icon: "info",
+            title: "Carrito vacío",
+            text: "Agregá productos antes de finalizar la compra.",
+            confirmButtonText: "Aceptar"
+        });
+        return;
+    }
+
     const sub = carrito.reduce((a, i) => a + i.precio * i.cantidad, 0);
     const total = Math.max(0, sub - descuento);
-    alert(
-        `Gracias por tu compra 🧾\n` +
-        `Ítems: ${carrito.reduce((a, i) => a + i.cantidad, 0)}\n` +
-        `Subtotal: $${fmt(sub)}\n` +
-        `Descuento: $${fmt(descuento)}\n` +
-        `Total: $${fmt(total)}\n` +
-        `IVA (21%) ref.: $${fmt(Math.round(total * IVA))}`
-    );
+    const iva = Math.round(total * IVA);
+    const items = carrito.reduce((a, i) => a + i.cantidad, 0);
+
+    Swal.fire({
+        icon: "success",
+        title: "Gracias por tu compra 🧾",
+        html: `
+            <p><strong>Ítems:</strong> ${items}</p>
+            <p><strong>Subtotal:</strong> $${formatPrecio(sub)}</p>
+            <p><strong>Descuento:</strong> $${formatPrecio(descuento)}</p>
+            <p><strong>Total:</strong> $${formatPrecio(total)}</p>
+            <p class="muted">IVA (21%) ref.: $${formatPrecio(iva)}</p>
+        `,
+        confirmButtonText: "Aceptar"
+    }).then(() => {
+        carrito = [];
+        descuento = 0;
+        persistir();
+        renderCarrito();
+    });
 }
 
-// Lcoal Storage
+// LOCALSTORAGE
 
 function persistir() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(carrito));
@@ -175,30 +217,30 @@ function cargarCarrito() {
     }
 }
 
-
+// EVENTOS
 
 function wire() {
-    // Delegación en catálogo
-    $("#catalogo").addEventListener("click", (e) => {
+    // catálogo
+    select("#catalogo").addEventListener("click", (e) => {
         const btn = e.target.closest(".btn-add");
         if (btn) agregarAlCarrito(Number(btn.dataset.id));
     });
 
-    // Delegación en carrito (+ / − / quitar)
-    $("#carrito").addEventListener("click", (e) => {
+    // carrito
+    select("#carrito").addEventListener("click", (e) => {
         const id = Number(e.target.dataset.id);
         if (e.target.classList.contains("mas")) cambiarCantidad(id, +1);
         if (e.target.classList.contains("menos")) cambiarCantidad(id, -1);
         if (e.target.classList.contains("quitar")) quitarItem(id);
     });
 
-    // Cupón
-    $("#aplicar").addEventListener("click", () =>
-        aplicarCupon($("#cupon").value)
+    // cupón
+    select("#aplicar").addEventListener("click", () =>
+        aplicarCupon(select("#cupon").value)
     );
 
-    // Filtro catálogo
-    $("#filtro").addEventListener("input", (e) => {
+    // filtro catálogo
+    select("#filtro").addEventListener("input", (e) => {
         const q = e.target.value.toLowerCase().trim();
         const filtrados = productos.filter((p) =>
             [p.nombre, p.categoria, p.talle].join(" ").toLowerCase().includes(q)
@@ -206,16 +248,29 @@ function wire() {
         renderCatalogo(filtrados);
     });
 
-    //Finalizar
-    $("#vaciar").addEventListener("click", vaciar);
-    $("#finalizar").addEventListener("click", finalizar);
+    // botones carrito
+    select("#vaciar").addEventListener("click", vaciar);
+    select("#finalizar").addEventListener("click", finalizar);
 }
 
-
+// INIT
 
 function init() {
-    renderCatalogo();
-    renderCarrito();
-    wire();
+    cargarProductos()
+        .then((data) => {
+            productos = data;
+            renderCatalogo();
+            renderCarrito();
+            wire();
+        })
+        .catch((err) => {
+            Swal.fire({
+                icon: "error",
+                title: "Error al cargar los productos",
+                text: "Intentalo más tarde.",
+                confirmButtonText: "Aceptar"
+            });
+        });
 }
+
 init();
