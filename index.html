@@ -6,146 +6,15 @@
     <link rel="icon" href="data:,">
     <title>Carrito – Indumentaria</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
-        :root {
-            --b: #111827;
-            --g: #e5e7eb;
-            --r: #ef4444;
-        }
-
-        body {
-            font-family: system-ui, sans-serif;
-            line-height: 1.4;
-            margin: 0;
-            background: #fafafa;
-            color: #111;
-        }
-
-        header {
-            position: sticky;
-            top: 0;
-            background: white;
-            border-bottom: 1px solid var(--g);
-            padding: 12px 16px;
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .badge {
-            background: var(--b);
-            color: #fff;
-            padding: 2px 8px;
-            border-radius: 999px;
-            font-size: 0.85rem;
-        }
-
-        main {
-            max-width: 1000px;
-            margin: 20px auto;
-            padding: 0 16px;
-            display: grid;
-            grid-template-columns: 1fr 360px;
-            gap: 16px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 12px;
-        }
-
-        .card {
-            background: #fff;
-            border: 1px solid var(--g);
-            border-radius: 12px;
-            padding: 12px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .card h3 {
-            margin: 0;
-            font-size: 1rem;
-        }
-
-        .muted {
-            color: #555;
-        }
-
-        button {
-            cursor: pointer;
-            border: 1px solid var(--b);
-            background: var(--b);
-            color: #fff;
-            border-radius: 10px;
-            padding: 8px 10px;
-        }
-
-        button.ghost {
-            background: #fff;
-            color: var(--b);
-        }
-
-        aside {
-            position: sticky;
-            top: 68px;
-            height: max-content;
-            background: #fff;
-            border: 1px solid var(--g);
-            border-radius: 12px;
-            padding: 12px;
-        }
-
-        .row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-        }
-
-        .item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 8px;
-            padding: 8px 0;
-            border-bottom: 1px dashed #eee;
-        }
-
-        .qty button {
-            padding: 2px 8px;
-        }
-
-        .danger {
-            border-color: var(--r);
-            color: var(--r);
-        }
-
-        input[type="text"] {
-            padding: 8px 10px;
-            border: 1px solid var(--g);
-            border-radius: 10px;
-        }
-
-        @media (max-width: 880px) {
-            main {
-                grid-template-columns: 1fr;
-            }
-
-            aside {
-                position: static;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="./css/style.css" />
 </head>
 
 <body>
     <header>
         <strong>Roxana Boutique</strong>
-        <span>Carrito <span class="badge" id="badge">0</span></span>
+        <button id="btnCarrito" class="carrito-btn">
+            🛒 Carrito <span class="badge" id="badge">0</span>
+        </button>
     </header>
 
     <main>
@@ -157,15 +26,16 @@
                     <input id="filtro" type="text" placeholder="remera, jean, talle M..." />
                 </div>
             </div>
-            <div id="catalogo" class="grid"><!-- render JS --></div>
+            <div id="catalogo" class="grid"></div>
         </section>
 
-        <aside>
+        <aside id="panel-carrito">
             <div class="row">
                 <h2 style="margin: 0">Carrito</h2>
                 <button id="vaciar" class="ghost danger">Vaciar</button>
             </div>
-            <div id="carrito"><!-- render JS --></div>
+
+            <div id="carrito"></div>
 
             <div style="margin-top: 10px" class="row">
                 <div>
@@ -194,13 +64,14 @@
         </aside>
     </main>
 
+    <div id="overlay"></div>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./app.js"></script>
 
-    
+    <footer style="text-align:center; padding:20px; color:#555;">
+        Proyecto Final JavaScript – Roxana Boutique
+    </footer>
 </body>
-<footer style="text-align:center; padding:20px; color:#555;">
-    Proyecto Final JavaScript – Roxana Boutique
-</footer>
 
 </html>

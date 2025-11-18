@@ -1,5 +1,3 @@
-
-
 const STORAGE_KEY = "carrito_indumentaria";
 const IVA = 0.21;
 let productos = [];            
@@ -24,6 +22,7 @@ function renderCatalogo(lista = productos) {
         const el = document.createElement("div");
         el.className = "card";
         el.innerHTML = `
+        <img src="${p.img}" class="foto-producto"/>
         <h3>${p.nombre}</h3>
         <div class="muted">${p.categoria} · Talles ${p.talle}</div>
         <div class="row">
@@ -253,6 +252,26 @@ function wire() {
     select("#finalizar").addEventListener("click", finalizar);
 }
 
+// CARRITO DESPLEGABLE
+
+function activarCarritoDesplegable() {
+    const panel = document.querySelector("#panel-carrito");
+    const overlay = document.querySelector("#overlay");
+    const btn = document.querySelector("#btnCarrito");
+
+    if (!panel || !overlay || !btn) return;
+
+    btn.addEventListener("click", () => {
+        const estaAbierto = panel.classList.toggle("abierto");
+        overlay.classList.toggle("visible", estaAbierto);
+    });
+
+    overlay.addEventListener("click", () => {
+        panel.classList.remove("abierto");
+        overlay.classList.remove("visible");
+    });
+}
+
 // INIT
 
 function init() {
@@ -262,6 +281,7 @@ function init() {
             renderCatalogo();
             renderCarrito();
             wire();
+            activarCarritoDesplegable();
         })
         .catch((err) => {
             Swal.fire({
