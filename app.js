@@ -42,12 +42,35 @@ function renderCatalogo(lista = productos) {
 // RENDER CARRITO
 function renderCarrito() {
     const cont = select("#carrito");
+
     if (!carrito.length) {
         cont.innerHTML = `<p class="muted">No agregaste productos.</p>`;
     } else {
         cont.innerHTML = carrito
-            .map(
-                (item) => `
+            .map((item) => {
+                let talles = item.talleDisponible;
+
+                if (!Array.isArray(talles)) {
+                    const base = item.talle;
+
+                    if (Array.isArray(base)) {
+                        // ej: ["S","M","L","XL"] o ["36-46"]
+                        talles = expandirRango(base);
+                    } else if (typeof base === "string" && base.includes("-")) {
+                        // ej: "36-46"
+                        talles = expandirRango([base]);
+                    } else if (typeof base === "string") {
+                        // ej: "S M L XL" o "S,M,L,XL"
+                        talles = base.split(/[,/ ]+/).filter(Boolean);
+                    } else {
+                        // último recurso
+                        talles = ["único"];
+                    }
+                }
+
+                const seleccionado = item.talleSeleccionado || talles[0];
+
+                return `
         <div class="item">
             <div>
                 <div><strong>${item.nombre}</strong></div>
@@ -56,11 +79,11 @@ function renderCarrito() {
                     <br>
                     <label>Talle:</label>
                     <select class="select-talle" data-id="${item.id}">
-                        ${item.talleDisponible
+                        ${talles
                             .map(
                                 (t) => `
                             <option value="${t}" ${
-                                t === item.talleSeleccionado ? "selected" : ""
+                                t === seleccionado ? "selected" : ""
                             }>${t}</option>
                         `
                             )
@@ -74,8 +97,8 @@ function renderCarrito() {
                 <button class="mas" data-id="${item.id}">+</button>
                 <button class="quitar danger ghost" data-id="${item.id}">Quitar</button>
             </div>
-        </div> `
-            )
+        </div> `;
+            })
             .join("");
     }
 
@@ -89,6 +112,7 @@ function renderCarrito() {
     const cant = carrito.reduce((acc, i) => acc + i.cantidad, 0);
     select("#badge").textContent = cant;
 }
+
 
 // EXPANDIR RANGO DE TALLES "36-46"
 function expandirRango(t) {
