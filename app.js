@@ -1,20 +1,22 @@
 const STORAGE_KEY = "carrito_indumentaria";
 const IVA = 0.21;
-let productos = [];            
+let productos = [];
 let carrito = cargarCarrito();
 let descuento = 0;
 
 const select = (sel) => document.querySelector(sel);
 const formatPrecio = (n) => n.toLocaleString("es-AR");
 
+// CARGAR PRODUCTOS DESDE JSON
 function cargarProductos() {
-    return fetch("./productos.json")
+    return fetch("productos.json")
         .then((res) => {
             if (!res.ok) throw new Error("No se pudo cargar productos.json");
             return res.json();
         });
 }
 
+// RENDER CATALOGO
 function renderCatalogo(lista = productos) {
     const cont = select("#catalogo");
     cont.innerHTML = "";
@@ -37,6 +39,7 @@ function renderCatalogo(lista = productos) {
     });
 }
 
+// RENDER CARRITO
 function renderCarrito() {
     const cont = select("#carrito");
     if (!carrito.length) {
@@ -86,6 +89,8 @@ function renderCarrito() {
     const cant = carrito.reduce((acc, i) => acc + i.cantidad, 0);
     select("#badge").textContent = cant;
 }
+
+// EXPANDIR RANGO DE TALLES "36-46"
 function expandirRango(t) {
     if (Array.isArray(t) && t.length === 1 && t[0].includes("-")) {
         const [ini, fin] = t[0].split("-").map(Number);
@@ -102,13 +107,16 @@ function agregarAlCarrito(id) {
     const prod = productos.find((p) => p.id === id);
     if (!prod) return;
     const found = carrito.find((i) => i.id === id);
-    if (found) found.cantidad += 1;
-    else carrito.push({ 
-    ...prod, 
-    cantidad: 1,
-    talleDisponible: expandirRango(prod.talle),
-    talleSeleccionado: prod.talle[0]   
-});
+    if (found) {
+        found.cantidad += 1;
+    } else {
+        carrito.push({
+            ...prod,
+            cantidad: 1,
+            talleDisponible: expandirRango(prod.talle),
+            talleSeleccionado: expandirRango(prod.talle)[0]
+        });
+    }
     persistir();
     renderCarrito();
 }
@@ -189,7 +197,7 @@ function vaciar() {
 
             Swal.fire({
                 icon: "success",
-                title: "se vacio el Carrito",
+                title: "Se vació el carrito",
                 timer: 1500,
                 showConfirmButton: false
             });
@@ -237,6 +245,7 @@ function finalizar() {
 function persistir() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(carrito));
 }
+
 function cargarCarrito() {
     try {
         const raw = localStorage.getItem(STORAGE_KEY);
@@ -255,7 +264,7 @@ function wire() {
         if (btn) agregarAlCarrito(Number(btn.dataset.id));
     });
 
-    // carrito
+    // carrito botones
     select("#carrito").addEventListener("click", (e) => {
         const id = Number(e.target.dataset.id);
         if (e.target.classList.contains("mas")) cambiarCantidad(id, +1);
@@ -263,14 +272,14 @@ function wire() {
         if (e.target.classList.contains("quitar")) quitarItem(id);
     });
 
-        // Cambio de talle
-select("#carrito").addEventListener("change", (e) => {
-    if (e.target.classList.contains("select-talle")) {
-        const id = Number(e.target.dataset.id);
-        const nuevoTalle = e.target.value;
-        actualizarTalle(id, nuevoTalle);
-    }
-});
+    // cambio de talle
+    select("#carrito").addEventListener("change", (e) => {
+        if (e.target.classList.contains("select-talle")) {
+            const id = Number(e.target.dataset.id);
+            const nuevoTalle = e.target.value;
+            actualizarTalle(id, nuevoTalle);
+        }
+    });
 
     // cupón
     select("#aplicar").addEventListener("click", () =>
@@ -314,11 +323,12 @@ function activarCarritoDesplegable() {
 // ACTUALIZAR TALLE
 
 function actualizarTalle(id, talle) {
-    const item = carrito.find(i => i.id === id);
+    const item = carrito.find((i) => i.id === id);
     if (!item) return;
     item.talleSeleccionado = talle;
     persistir();
 }
+
 // INIT
 
 function init() {
@@ -327,10 +337,9 @@ function init() {
             productos = data;
             renderCatalogo();
             renderCarrito();
-            wire();
-            activarCarritoDesplegable();
         })
         .catch((err) => {
+            console.error("Error al cargar productos.json:", err);
             Swal.fire({
                 icon: "error",
                 title: "Error al cargar los productos",
@@ -338,6 +347,8 @@ function init() {
                 confirmButtonText: "Aceptar"
             });
         });
+    wire();
+    activarCarritoDesplegable();
 }
 
 init();
