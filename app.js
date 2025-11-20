@@ -24,12 +24,15 @@ function renderCatalogo(lista = productos) {
         el.innerHTML = `
         <img src="${p.img}" class="foto-producto"/>
         <h3>${p.nombre}</h3>
-        <div class="muted">${p.categoria} · Talles ${p.talle}</div>
-        <div class="row">
-        <strong>$${formatPrecio(p.precio)}</strong>
-        <button data-id="${p.id}" class="btn-add">Agregar</button>
+        <div class="muted">
+            ${p.categoria} · Talles ${
+                Array.isArray(p.talle) ? p.talle.join(" - ") : p.talle
+            }
         </div>
-    `;
+        <div class="row">
+            <strong>$${formatPrecio(p.precio)}</strong>
+            <button data-id="${p.id}" class="btn-add">Agregar</button>
+        </div>`;
         cont.appendChild(el);
     });
 }
@@ -44,16 +47,29 @@ function renderCarrito() {
                 (item) => `
         <div class="item">
             <div>
-            <div><strong>${item.nombre}</strong></div>
-            <div class="muted">
-                $${formatPrecio(item.precio)} · ${item.talle || "Talle único"}
-            </div>
+                <div><strong>${item.nombre}</strong></div>
+                <div class="muted">
+                    $${formatPrecio(item.precio)}
+                    <br>
+                    <label>Talle:</label>
+                    <select class="select-talle" data-id="${item.id}">
+                        ${item.talleDisponible
+                            .map(
+                                (t) => `
+                            <option value="${t}" ${
+                                t === item.talleSeleccionado ? "selected" : ""
+                            }>${t}</option>
+                        `
+                            )
+                            .join("")}
+                    </select>
+                </div>
             </div>
             <div class="qty">
-            <button class="menos" data-id="${item.id}">−</button>
-            <span>${item.cantidad}</span>
-            <button class="mas" data-id="${item.id}">+</button>
-            <button class="quitar danger ghost" data-id="${item.id}">Quitar</button>
+                <button class="menos" data-id="${item.id}">−</button>
+                <span>${item.cantidad}</span>
+                <button class="mas" data-id="${item.id}">+</button>
+                <button class="quitar danger ghost" data-id="${item.id}">Quitar</button>
             </div>
         </div> `
             )
@@ -70,6 +86,15 @@ function renderCarrito() {
     const cant = carrito.reduce((acc, i) => acc + i.cantidad, 0);
     select("#badge").textContent = cant;
 }
+function expandirRango(t) {
+    if (Array.isArray(t) && t.length === 1 && t[0].includes("-")) {
+        const [ini, fin] = t[0].split("-").map(Number);
+        const arr = [];
+        for (let i = ini; i <= fin; i++) arr.push(String(i));
+        return arr;
+    }
+    return t;
+}
 
 // LÓGICA
 
@@ -78,7 +103,12 @@ function agregarAlCarrito(id) {
     if (!prod) return;
     const found = carrito.find((i) => i.id === id);
     if (found) found.cantidad += 1;
-    else carrito.push({ ...prod, cantidad: 1 });
+    else carrito.push({ 
+    ...prod, 
+    cantidad: 1,
+    talleDisponible: expandirRango(prod.talle),
+    talleSeleccionado: prod.talle[0]   
+});
     persistir();
     renderCarrito();
 }
@@ -233,6 +263,15 @@ function wire() {
         if (e.target.classList.contains("quitar")) quitarItem(id);
     });
 
+        // Cambio de talle
+select("#carrito").addEventListener("change", (e) => {
+    if (e.target.classList.contains("select-talle")) {
+        const id = Number(e.target.dataset.id);
+        const nuevoTalle = e.target.value;
+        actualizarTalle(id, nuevoTalle);
+    }
+});
+
     // cupón
     select("#aplicar").addEventListener("click", () =>
         aplicarCupon(select("#cupon").value)
@@ -272,6 +311,14 @@ function activarCarritoDesplegable() {
     });
 }
 
+// ACTUALIZAR TALLE
+
+function actualizarTalle(id, talle) {
+    const item = carrito.find(i => i.id === id);
+    if (!item) return;
+    item.talleSeleccionado = talle;
+    persistir();
+}
 // INIT
 
 function init() {

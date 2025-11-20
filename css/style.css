@@ -85,6 +85,19 @@ main {
     font-size: 0.9rem;
     cursor: pointer;
 }
+.select-talle {
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--g);
+    background: #fff;
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-top: 4px;
+}
+
+.select-talle:hover {
+    border-color: var(--b);
+}
 
 
 #panel-carrito {
