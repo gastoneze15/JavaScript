@@ -3,7 +3,12 @@
         "id": 201,
         "nombre": "Remera oversize",
         "categoria": "remeras",
-        "talle": ["S","M","L","XL"],
+        "talle": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
         "precio": 14500,
         "img": "https://media.istockphoto.com/id/1348327772/es/foto/joven-en-maqueta-de-camiseta-oversize-en-blanco-delante-y-detr%C3%A1s-utilizada-como-plantilla-de.webp?a=1&b=1&s=612x612&w=0&k=20&c=UeC5JeWQQzBo2m0ExY-3IPa_OY_ptmH1uzwA4Fx2qvU="
     },
@@ -11,15 +16,25 @@
         "id": 202,
         "nombre": "Remera básica cuello V",
         "categoria": "remeras",
-        "talle": ["S","M","L","XL"],
+        "talle": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
         "precio": 12900,
-        "img": "https://images.unsplash.com/photo-1593415227861-8b9bea3bcab3?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 387w, https://images.unsplash.com/photo-1593415227861-8b9bea3bcab3?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 687w, https://images.unsplash.com/photo-1593415227861-8b9bea3bcab3?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 774w, https://images.unsplash.com/photo-1593415227861-8b9bea3bcab3?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 987w, https://images.unsplash.com/photo-1593415227861-8b9bea3bcab3?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 1287w, https://images.unsplash.com/photo-1593415227861-8b9bea3bcab3?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 1374w, https://images.unsplash.com/photo-1593415227861-8b9bea3bcab3?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 1587w, https://images.unsplash.com/photo-1593415227861-8b9bea3bcab3?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 1887w, https://images.unsplash.com/photo-1593415227861-8b9bea3bcab3?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 1974w, https://images.unsplash.com/photo-1593415227861-8b9bea3bcab3?q=80&w=2187&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 2187w, https://images.unsplash.com/photo-1593415227861-8b9bea3bcab3?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 2487w, https://images.unsplash.com/photo-1593415227861-8b9bea3bcab3?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 2574w, https://images.unsplash.com/photo-1593415227861-8b9bea3bcab3?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 2787w, https://images.unsplash.com/photo-1593415227861-8b9bea3bcab3?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 3087w, https://images.unsplash.com/photo-1593415227861-8b9bea3bcab3?q=80&w=3174&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 3174w, https://images.unsplash.com/photo-1593415227861-8b9bea3bcab3?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 3387w, https://images.unsplash.com/photo-1593415227861-8b9bea3bcab3?q=80&w=3687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 3687w, https://images.unsplash.com/photo-1593415227861-8b9bea3bcab3?q=80&w=3774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 3774w, https://images.unsplash.com/photo-1593415227861-8b9bea3bcab3?q=80&w=3987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 3987w, https://images.unsplash.com/photo-1593415227861-8b9bea3bcab3?q=80&w=4287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 4287w, https://images.unsplash.com/photo-1593415227861-8b9bea3bcab3?q=80&w=4374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 4374w, https://images.unsplash.com/photo-1593415227861-8b9bea3bcab3?q=80&w=4587&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 4587w, https://images.unsplash.com/photo-1593415227861-8b9bea3bcab3?q=80&w=4887&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 4887w, https://images.unsplash.com/photo-1593415227861-8b9bea3bcab3?q=80&w=4974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 4974w, https://images.unsplash.com/photo-1593415227861-8b9bea3bcab3?q=80&w=5018&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D 5018w"
+        "img": "https://images.unsplash.com/photo-1593415227861-8b9bea3bcab3?q=80&w=1200&auto=format&fit=crop"
     },
     {
         "id": 203,
         "nombre": "Top morley canelado",
         "categoria": "tops",
-        "talle": ["S","M","L","XL"],
+        "talle": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
         "precio": 9800,
         "img": "https://images.unsplash.com/photo-1762741312879-001acdf2c904?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
@@ -27,7 +42,9 @@
         "id": 204,
         "nombre": "Jean mom",
         "categoria": "jeans",
-        "talle": ["36-46"],
+        "talle": [
+            "36-46"
+        ],
         "precio": 45900,
         "img": "https://images.unsplash.com/photo-1665931501377-c77e06e25d9b?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
@@ -35,7 +52,9 @@
         "id": 205,
         "nombre": "Jean wide leg",
         "categoria": "jeans",
-        "talle": ["36-46"],
+        "talle": [
+            "36-46"
+        ],
         "precio": 49900,
         "img": "https://plus.unsplash.com/premium_photo-1760657044843-d1103a730381?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
@@ -43,7 +62,12 @@
         "id": 206,
         "nombre": "Pantalón sastrero",
         "categoria": "pantalones",
-        "talle": ["S","M","L","XL"],
+        "talle": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
         "precio": 42900,
         "img": "https://plus.unsplash.com/premium_photo-1689977493146-ed929d07d97e?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
@@ -51,7 +75,12 @@
         "id": 207,
         "nombre": "Vestido midi floral",
         "categoria": "vestidos",
-        "talle": ["S","M","L","XL"],
+        "talle": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
         "precio": 53900,
         "img": "https://images.unsplash.com/photo-1762154057377-cc9d3dd6900c?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
@@ -59,73 +88,105 @@
         "id": 208,
         "nombre": "Vestido camisero",
         "categoria": "vestidos",
-        "talle": ["S","M","L","XL"],
+        "talle": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
         "precio": 58900,
-        "img":"https://plus.unsplash.com/premium_photo-1664372388015-ec443ab9db68?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        "img": "https://plus.unsplash.com/premium_photo-1664372388015-ec443ab9db68?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
         "id": 209,
         "nombre": "Buzo capucha",
         "categoria": "buzos",
-        "talle": ["S","M","L","XL"],
+        "talle": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
         "precio": 33900,
-        "img":"https://plus.unsplash.com/premium_photo-1673827311290-d435f481152e?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        "img": "https://plus.unsplash.com/premium_photo-1673827311290-d435f481152e?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
         "id": 210,
         "nombre": "Sweater trenza",
         "categoria": "sweaters",
-        "talle": ["S","M","L","XL"],
+        "talle": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
         "precio": 31900,
-        "img":"https://images.unsplash.com/photo-1601379327928-bedfaf9da2d0?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        "img": "https://images.unsplash.com/photo-1601379327928-bedfaf9da2d0?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
         "id": 211,
         "nombre": "Campera eco-cuero",
         "categoria": "camperas",
-        "talle": ["S","M","L","XL"],
+        "talle": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
         "precio": 79900,
-        "img":"https://images.unsplash.com/photo-1675877879221-871aa9f7c314?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        "img": "https://images.unsplash.com/photo-1675877879221-871aa9f7c314?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
         "id": 212,
         "nombre": "Campera Puffer",
         "categoria": "camperas",
-        "talle": ["S","M","L","XL"],
+        "talle": [
+            "S",
+            "M",
+            "L",
+            "XL"
+        ],
         "precio": 89900,
-        "img":"https://images.unsplash.com/photo-1706765779494-2705542ebe74?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        "img": "https://images.unsplash.com/photo-1706765779494-2705542ebe74?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
         "id": 213,
         "nombre": "Zapatillas urbanas",
         "categoria": "calzado",
-        "talle": ["35-40"],
+        "talle": [
+            "35-40"
+        ],
         "precio": 75900,
-        "img":"https://images.unsplash.com/photo-1463080197951-ea6abbd2bb9c?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        "img": "https://images.unsplash.com/photo-1463080197951-ea6abbd2bb9c?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
-
     {
         "id": 214,
         "nombre": "Borcegos c/ plataforma",
         "categoria": "calzado",
-        "talle": ["35-40"],
+        "talle": [
+            "35-40"
+        ],
         "precio": 89900,
-        "img":"https://plus.unsplash.com/premium_photo-1671718110912-2bf5ce67d504?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        "img": "https://plus.unsplash.com/premium_photo-1671718110912-2bf5ce67d504?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
         "id": 215,
         "nombre": "Cinto cuero ancho",
         "categoria": "accesorios",
-        "talle": ["unico"],
+        "talle": [
+            "Único"
+        ],
         "precio": 14900,
-        "img":"https://images.unsplash.com/photo-1664285612706-b32633c95820?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        "img": "https://images.unsplash.com/photo-1664285612706-b32633c95820?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
         "id": 216,
         "nombre": "Cartera bandolera",
         "categoria": "accesorios",
-        "talle": ["unico"],
+        "talle": [
+            "Único"
+        ],
         "precio": 42900,
-        "img":"https://images.unsplash.com/photo-1709898838174-83c3e155654c?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        "img": "https://images.unsplash.com/photo-1709898838174-83c3e155654c?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     }
 ]
